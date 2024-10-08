@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nodered:
+    build: .
+    container_name: nodered
+    environment:
+      - TZ=Europe/Madrid                  # Ajusta la zona horaria según tu ubicación
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./data:/data                      # Monta un volumen para persistir datos
+      - ./settings.js:/data/settings.js   # Monta el archivo de configuración personalizado
+    restart: unless-stopped
